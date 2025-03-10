@@ -25,4 +25,6 @@ jobs:
       - name: Run a one-line echo
         run: echo hello, world!
 
+      - name: secrets variales
+        run: echo ${{secrets.SERVER_IP}}
       
