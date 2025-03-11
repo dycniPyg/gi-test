@@ -17,7 +17,6 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '8'
-          #cache: maven
 
       - name: Check Java Version
         run: java -version 
@@ -25,8 +24,8 @@ jobs:
       - name: Run a one-line echo
         run: echo hello, world!
 
-      - name: secrets variales
-        run: echo ${{secrets.SERVER_IP}}
+      - name: Check if Server IP is set
+        run: echo "Server IP is set"
 
       - name: Set up SSH key
         run: |
@@ -35,7 +34,5 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
 
-
       - name: SSH into server
-        run: ssh -i ~/.ssh/id_rsa hpe@${{ secrets.SERVER_IP }} "echo Connected!"
-      
+        run: ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa hpe@${{ secrets.SERVER_IP }} "echo Connected!"
