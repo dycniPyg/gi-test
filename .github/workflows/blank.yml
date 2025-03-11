@@ -30,3 +30,4 @@ jobs:
       - name: Set up SSH key
         run: |
           mkdir -p ~/.ssh
+          printf "%s" "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
