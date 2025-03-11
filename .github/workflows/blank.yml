@@ -27,4 +27,7 @@ jobs:
 
       - name: secrets variales
         run: echo ${{secrets.SERVER_IP}}
+
+      - name: test
+        run: echo 123123
       
